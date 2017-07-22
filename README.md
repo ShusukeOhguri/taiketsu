@@ -1,24 +1,34 @@
-# README
+# DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
+|Column |Type   |Option                                 |
+|:------|------:|:-------------------------------------:|
+|name   |string |null: false, unique: true, index: true |
+|mail   |string |null: false, unique: true              |
+|pass   |string |null: false                            |
+### Association
+・has_many :opinions
+・has_many :themes
 
-Things you may want to cover:
+## opinion table
+|Column   |Type     |Option                           |
+|:--------|--------:|:-------------------------------:|
+|text     |text     |null: false,                     |
+|wing     |integer  |null: false, 0 = left, 1 = right |
+|agree    |integer  |                                 |
+|opposite |integer  |                                 |
+|user_id  |integer  |null: false, foreign_key: true   |
+|theme_id |integer  |null: false, foreign_key: true   |
+### Association
+・belongs_to :theme
+・belongs_to :user
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## theme table
+|Column   |Type     |Option                         |
+|:--------|--------:|:-----------------------------:|
+|user_id  |integer  |null: false, foreign_key: true |
+|left     |string   |null: false                    |
+|right    |string   |null: false                    |
+### Association
+・has_many :opinions
+・belongs_to :user
