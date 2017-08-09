@@ -1,0 +1,35 @@
+html body{
+  background-color: $main_background_color;
+}
+
+.divise_top{
+  line-height: 200px;
+  height: 200px;
+  h2{
+    margin: 0 auto;
+  }
+}
+
+.divise_main{
+  background-color: $main-contents_color;
+  height: 500px;
+  margin-bottom: 20px;
+  #new_user{
+    padding-top: 20px;
+    .field{
+      color: black;
+      height: 100px;
+      font-size: 25px;
+    }
+    .divise{
+      color: $main_white;
+      padding: 0 30px;
+    }
+  }
+}
+
+a {
+  color: $main_white;
+  text-decoration: none;
+  font-size: 20px;
+}
