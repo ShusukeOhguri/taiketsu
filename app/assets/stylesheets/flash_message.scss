@@ -1,0 +1,15 @@
+.alert {
+  text-align: center;
+}
+
+.alert-{
+  &alert{
+    background-color: red;
+  }
+
+  &notice{
+    color: $main_white;
+    background-color: $notice_blue;
+  }
+}
+
