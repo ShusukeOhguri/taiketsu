@@ -12,10 +12,18 @@ html body {
 .button{
   height: 40px;
   max-width: 200px;
+  margin: 0 auto;
   border-width: 0px;
   border-style: solid;
   border-radius: 100px;
   background-color: $button_color;
+  a{
+    height: 35.88px;
+    line-height: 40px;
+    width: 40px;
+    color: $main_white;
+    text-decoration: none;
+  }
 }
 
 .top-content{
@@ -40,15 +48,11 @@ html body {
       font-size: 1.4rem;
       margin-bottom: 17.5px;
     }
-
-    a{
-      height: 35.88px;
-      line-height: 40px;
-    }
   }
 
-  .shousai{
+  .sign_out{
     margin: 0 auto 17.5px;
+    text-decoration: none;
   }
 
   .icon_box{
@@ -68,6 +72,7 @@ html body {
         border: 1px solid $main_white;
         color: $main_white;
         font-size: 25px;
+        text-decoration: none;
       }
 
       .fa-hatena{
@@ -148,8 +153,8 @@ html body {
   }
 
   .advertising{
-    width: 746px;
-    height: 96px;
+    width: 730px;
+    height: 80px;
     margin: 10px auto 40px;
     background-color: silver;
   }
