@@ -4,17 +4,18 @@
   .top-content_columns
     %p
       いつも宿敵、ライバルとして憎み合い、争い合う二人。
-      %br たまには言いたいことを遠慮なく吐き出してみませんか？x
-    .button.shousai
-      %a
-        もっと詳しく
+      %br たまには言いたいことを遠慮なく吐き出してみませんか？
+    .button
+      = link_to destroy_user_session_path, method: :delete do
+        .sign_out
+          Sign out
   .icon_box.clearfix
     .icon
-      .fa.fa-facebook
+      %a.fa.fa-facebook{:href => "https://www.facebook.com/sharer/sharer.php?u=http://taiketsu.co"}
     .icon
-      .fa.fa-twitter
+      %a.fa.fa-twitter{:href => "https://twitter.com/taiketsu_co"}
     .icon
-      .fa.fa-hatena
+      %a.fa.fa-hatena{:href => "http://b.hatena.ne.jp/entry/http://taiketsu.co"}
         B!
 .main-content
   .popularity_theme
@@ -192,7 +193,7 @@
           .blue_side
             %a.count 50
   .advertising
-    広告
+    %img.img_ad{:alt => "", :border => "0", :src => "https://tpc.googlesyndication.com/simgad/14352081502697085382", :width => "728"}/
   .pagination-centered
     .pagination.clearfix
       %li
