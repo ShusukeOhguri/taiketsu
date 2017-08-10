@@ -11,7 +11,7 @@ html body {
 
 .button{
   height: 40px;
-  max-width: 200px;
+  width: 200px;
   margin: 0 auto;
   border-width: 0px;
   border-style: solid;
@@ -221,8 +221,12 @@ html body {
     .columns{
       height: 2.3125rem;
       width: 300px;
+      margin: 0 auto;
       border: solid 1px;
-
+      border-color: $main_white;
+      font-size: 25px;
+      color: $main_white;
+      background-color: $main_background_color;
       &--left{
         float: left;
       }
@@ -240,6 +244,9 @@ html body {
   .toukou{
     margin: 30px auto 0 auto;
     line-height: 40px;
+    height: 35.88px;
+    color: $main_white;
+    text-decoration: none;
   }
 
   .attention{
