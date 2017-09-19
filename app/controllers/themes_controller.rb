@@ -15,11 +15,13 @@ class ThemesController < ApplicationController
 
   def show
     @theme = Theme.find(params[:id])
+    @user_id = current_user.id
+    @new_opinion = Opinion.new
   end
 
   private
     def create_params
-      params.require(:theme).permit(:red, :blue).merge(user_id: current_user.id)
+      params.require(:theme).permit(:red, :blue).merge(user_id: @user_id)
     end
 
     def new_theme
