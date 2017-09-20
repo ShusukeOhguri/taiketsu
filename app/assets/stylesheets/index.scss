@@ -29,8 +29,8 @@ html body {
 .top-content{
   background: $main_background_color;
   background-size: cover;
-  color: $main_white;
   text-align: center;
+  color: $main_white;
 }
 
 .index{
@@ -40,6 +40,7 @@ html body {
   }
   
   &_logo{
+    color: $main_white;
     margin: 80px;
     font-style: normal;
     font-size: 57px;
@@ -89,10 +90,13 @@ html body {
 
 .main-content{
   padding: 20px 0;
-  max-height: 1559.8px;
+
   background-color: $main-contents_color;
   color: black;
   font-size: 22px;
+  .theme_show{
+    max-height: 1559.8px;
+  }
 
   .popularity_theme{
     margin: 2.8px auto 21px;
@@ -112,18 +116,16 @@ html body {
         height: 16px;
         margin: 20px 0 0;
         border-radius: 16px;
-        width: 235px;
+        width: 234px;
         line-height: 10px;
         .red_bar{
           background-color: $red_side_color;
-          width: $red_side;
           float:left;
           height: 16px;
           border-radius: 16px 0 0 16px;
         }
         .blue_bar{
           background-color: $blue_side_color;
-          width: $blue_side;
           float:right;
           height: 16px;
           border-radius: 0 16px 16px 0;
@@ -201,6 +203,7 @@ html body {
     margin: auto;
     max-width: 700px;
     line-height: 2.3125rem;
+    margin-bottom: 30px;
 
     .columns{
       height: 2.3125rem;
@@ -218,14 +221,6 @@ html body {
     }
   }
 
-  .toukou{
-    margin: 30px auto 0 auto;
-    line-height: 40px;
-    height: 35.88px;
-    color: $main_white;
-    text-decoration: none;
-  }
-
   .attention{
     font-size: 10px;
     margin: 20px 0;
@@ -236,7 +231,6 @@ html body {
   min-height: 43px;
   padding-top: 10px;
   background: #222222;
-  color: #999999;
   padding: 15px 69.5px 0;
 
   &_columns{
@@ -251,5 +245,6 @@ html body {
     font-size: 0.875rem;
     padding: 2.625px 14px;
     margin-bottom: 17.500px;
+    color: #999999;
   }
 }

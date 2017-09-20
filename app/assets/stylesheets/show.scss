@@ -1,0 +1,116 @@
+.show{
+  &_top{
+    height: 38px;
+    padding: 20px 20px;
+  }
+
+  &_logo{
+    font-size: 28px;
+    width: 840px;
+    margin: 0 auto;
+    a {
+      float: left;
+      margin: 0 8.75px;
+      color: #ffffff;
+    }
+  }
+
+  &_columns{
+    float: right;
+    width: 100px;
+  }
+}
+
+.adjustlink_box{
+  margin: 0 auto 10px;
+  width: 840px;
+  .adjustlink{
+    width: 402.5px;
+    padding: 0 8.750px;
+    font-size: 14px;
+    color: #347299;
+  }
+}
+
+.theme_panel{
+  margin: 0 auto 17.5px;
+  padding: 12.25px;
+  height: 140px;
+  width: 800px;
+  background-color: $main_white;
+  box-shadow: 0 3px 5px #cccccc;
+  .theme_box{
+    padding: 30px 0;
+    line-height: 30px;
+    .theme{
+      width: 360px;
+      font-size: 28px;
+    }
+    .vs{
+      margin: 0 auto;
+    }
+  }
+
+  .social{
+    border-top: solid 1px #e1e1e1;
+    padding-top: 20px;
+    height: 26px;
+  }
+}
+
+.comment_box{
+  margin: 0 auto;
+  width: 840px;
+  .comments{
+    margin: 0 8.750px;
+    padding: 12.25px 0 12.25px 0;
+    width: 378px;
+    background-color: $main_white;
+    box-shadow: 0 3px 5px #cccccc;
+    font-size: 15px;
+    .comments_side{
+      width: 355px;
+      padding: 10px 12.25px 10px 12.25px;
+      border-bottom: solid 1px #e1e1e1;
+      text-align: left;
+      span{
+        font-size: 21px;
+      }
+      .primary{
+        color: $red_side_color;
+      }
+      .secondary{
+        color: $blue_side_color;
+      }
+    }
+    .comment_block{
+      text-align: left;
+      width: 354px;
+      padding: 7px;
+      word-wrap: break-word;
+      white-space: normal;
+      padding: 10px 12.25px 10px 12.25px;
+      border-bottom: solid 1px #e1e1e1;
+      .speaker{
+        font-weight: bold;
+      }
+    }
+    .new_opinion{
+      word-wrap: break-word;
+      white-space: normal;
+      display: block;
+    }
+      .columns{
+        width: 330px;
+        height: 100px;
+        padding: 7px;
+        margin: 14px 0 14px 0;
+        text-align: left;
+        padding: 10px 12.25px 10px 12.25px;
+        word-wrap: break-word;
+        white-space: normal;
+      }
+
+  }
+}
+
