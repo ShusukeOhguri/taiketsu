@@ -1,0 +1,128 @@
+.top-content.show_top.clearfix
+  .show_logo
+    %a{:href => "http://localhost:3000"}
+      タイケツ
+  .show_columns.button
+    = link_to destroy_user_session_path, method: :delete do
+      .sign_out
+        Sign out
+.main-content.theme_show
+  .adjustlink_box.clearfix
+    - if Theme.exists?(@theme.id - 1)
+      .adjustlink.left
+        %a.left{:href => "http://localhost:3000/themes/#{Theme.find((@theme.id)-1).id}"}
+          %i.fa.fa-arrow-circle-left
+          = "#{Theme.find((@theme.id)-1).red} vs #{Theme.find((@theme.id)-1).blue}"
+    - if Theme.exists?(@theme.id + 1)
+      .adjustlink.right
+        %a.right{:href => "http://localhost:3000/themes/#{Theme.find((@theme.id)+1).id}"}
+          = "#{Theme.find((@theme.id)+1).red} vs #{Theme.find((@theme.id)+1).blue}"
+          %i.fa.fa-arrow-circle-right
+  .theme_panel
+    .theme_box
+      .theme.left
+        = @theme.red
+      .theme.right
+        = @theme.blue
+      .vs
+        vs
+    .social
+  .advertising
+    %img.img_ad{:alt => "", :border => "0", :src => "https://tpc.googlesyndication.com/simgad/14352081502697085382", :width => "728"}/
+  .comment_box.clearfix
+    .left.comments
+      .left.comments_side
+        %span.primary
+          = @theme.red
+        からのご意見
+      - if @opinions.present?
+        - @opinions.each do |opinion|
+          - if opinion.side == 0
+            .comment_block.clearfix
+              .speaker
+                = User.find(opinion.user_id).name
+                さん
+              %p
+                = opinion.text
+              .when_speaking.right
+                = opinion.created_at
+      = form_for [@theme, @new_opinion] do |f|
+        .comment_form
+          = f.text_field :text, class: 'columns'
+          = f.hidden_field :side, value: '0'
+        = f.submit "投稿する", class: 'button toukou'
+    .right.comments
+      .left.comments_side
+        %span.secondary
+          = @theme.blue
+        からのご意見
+      - if @opinions.present?
+        - @opinions.each do |opinion|
+          - if opinion.side == 1
+            .comment_block.clearfix
+              .speaker
+                = User.find(opinion.user_id).name
+                さん
+              %p
+                = opinion.text
+              .when_speaking.right
+                = opinion.created_at
+      = form_for [@theme, @new_opinion] do |f|
+        .comment_form
+          = f.text_field :text, class: 'columns'
+          = f.hidden_field :side, value: '1'
+        = f.submit "投稿する", class: 'button toukou'
+  .advertising
+    %img.img_ad{:alt => "", :border => "0", :src => "https://tpc.googlesyndication.com/simgad/14352081502697085382", :width => "728"}/
+  .recruiting_opinions
+    ご意見募集中のお題
+  .content_box.clearfix
+    - @recruiting_opinions_themes.each do |theme|
+      %a.content{:href => "http://localhost:3000/themes/#{theme[:id]}"}
+        .panel.clearfix
+          .theme
+            = Theme.find(theme[:id]).red
+          .vs
+            vs
+          .theme
+            = Theme.find(theme[:id]).blue
+          .bar
+            -if theme[:opinion] > 0
+              .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
+                %i.count
+                  = theme[:red]
+              .blue_bar{:style => "width: #{234 * theme[:blue]/theme[:opinion]}px;"}
+                %i.count
+                  = theme[:blue]
+            -else
+              .red_bar{:style => "width: #{234/2}px;"}
+                %i.count
+                  = theme[:red]
+              .blue_bar{:style => "width: #{234/2}px;"}
+                %i.count
+                  = theme[:blue]
+.bottom-content.clearfix
+  .bottom-content_title
+    お題を投稿する
+  .bottom-content_explanation
+    ライバル関係にある２つのことがらを投稿してみてください。
+  = form_for @new_theme do |f|
+    .postform
+      .columns.left
+        = f.text_field :red, class: 'columns'
+      .columns.right
+        = f.text_field :blue, class: 'columns'
+      .vs
+        %p vs
+    = f.submit "投稿する", class: 'button toukou'
+  .attention
+    投稿できるお題は各50文字以内です。
+.footer.clearfix
+  .footer_columns
+    %a{:href => "http://localhost:3000"}
+      トップページ
+    %a タイケツの楽しみ方
+    %a 利用規約・免責事項
+    %a お問い合わせ
+  .footer_copy
+    %a @TAIKETSU

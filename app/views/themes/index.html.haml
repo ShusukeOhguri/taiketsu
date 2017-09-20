@@ -1,6 +1,7 @@
 .top-content.index_top.clearfix
   .index_logo
-    タイケツ
+    %a.index_logo{:href => "http://localhost:3000"}
+      タイケツ
   .index_columns
     %p
       いつも宿敵、ライバルとして憎み合い、争い合う二人。
@@ -21,165 +22,30 @@
   .popularity_theme
     人気のお題
   .content_box.clearfix
-    %a.content{:href => "http://localhost:3000/themes/1"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://localhost:3000/themes/1"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://localhost:3000/themes/1"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-  .content_box.clearfix
-    %a.content{:href => "http://localhost:3000/themes/1"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://localhost:3000/themes/1"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://localhost:3000/themes/1"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-  .content_box.clearfix
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-  .content_box.clearfix
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
+    - @popularity_themes.each do |theme|
+      %a.content{:href => "http://localhost:3000/themes/#{theme[:id]}"}
+        .panel.clearfix
+          .theme
+            = Theme.find(theme[:id]).red
+          .vs
+            vs
+          .theme
+            = Theme.find(theme[:id]).blue
+          .bar
+            -if theme[:opinion] > 0
+              .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
+                %i.count
+                  = theme[:red]
+              .blue_bar{:style => "width: #{234 * theme[:blue]/theme[:opinion]}px;"}
+                %i.count
+                  = theme[:blue]
+            -else
+              .red_bar{:style => "width: #{234/2}px;"}
+                %i.count
+                  = theme[:red]
+              .blue_bar{:style => "width: #{234/2}px;"}
+                %i.count
+                  = theme[:blue]
 
   .advertising
     %img.img_ad{:alt => "", :border => "0", :src => "https://tpc.googlesyndication.com/simgad/14352081502697085382", :width => "728"}/
@@ -201,85 +67,30 @@
   .recruiting_opinions
     ご意見募集中のお題
   .content_box.clearfix
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-  .content_box.clearfix
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
-    %a.content{:href => "http://taiketsu.co/151/"}
-      .panel.clearfix
-        .theme
-          ore
-        .vs
-          vs
-        .theme
-          omae
-        .bar
-          .red_bar
-            %i.count 50
-          .blue_bar
-            %i.count 50
+    - @recruiting_opinions_themes.each do |theme|
+      %a.content{:href => "http://localhost:3000/themes/#{theme[:id]}"}
+        .panel.clearfix
+          .theme
+            = Theme.find(theme[:id]).red
+          .vs
+            vs
+          .theme
+            = Theme.find(theme[:id]).blue
+          .bar
+            -if theme[:opinion] > 0
+              .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
+                %i.count
+                  = theme[:red]
+              .blue_bar{:style => "width: #{234 * theme[:blue]/theme[:opinion]}px;"}
+                %i.count
+                  = theme[:blue]
+            -else
+              .red_bar{:style => "width: #{234/2}px;"}
+                %i.count
+                  = theme[:red]
+              .blue_bar{:style => "width: #{234/2}px;"}
+                %i.count
+                  = theme[:blue]
 
 .bottom-content.clearfix
   .bottom-content_title
@@ -299,7 +110,8 @@
     投稿できるお題は各50文字以内です。
 .footer.clearfix
   .footer_columns
-    %a トップページ
+    %a{:href => "http://localhost:3000"}
+      トップページ
     %a タイケツの楽しみ方
     %a 利用規約・免責事項
     %a お問い合わせ
