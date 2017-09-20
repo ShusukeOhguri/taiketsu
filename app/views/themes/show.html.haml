@@ -6,6 +6,7 @@
     = link_to destroy_user_session_path, method: :delete do
       .sign_out
         Sign out
+
 .main-content.theme_show
   .adjustlink_box.clearfix
     - if Theme.exists?(@theme.id - 1)
@@ -18,6 +19,7 @@
         %a.right{:href => "http://localhost:3000/themes/#{Theme.find((@theme.id)+1).id}"}
           = "#{Theme.find((@theme.id)+1).red} vs #{Theme.find((@theme.id)+1).blue}"
           %i.fa.fa-arrow-circle-right
+
   .theme_panel
     .theme_box
       .theme.left
@@ -29,7 +31,9 @@
     .social
   .advertising
     %img.img_ad{:alt => "", :border => "0", :src => "https://tpc.googlesyndication.com/simgad/14352081502697085382", :width => "728"}/
+
   .comment_box.clearfix
+
     .left.comments
       .left.comments_side
         %span.primary
@@ -42,8 +46,18 @@
               .speaker
                 = User.find(opinion.user_id).name
                 さん
-              %p
-                = opinion.text
+              .text
+                %p
+                  = opinion.text
+              .assessment
+                .ldc-ul_cont.agree.left
+                  .fa.fa-thumbs-up
+                    .count.right
+                      = "(#{opinion.agree})"
+                .ldc-ul_cont.opposite.left
+                  .fa.fa-thumbs-down
+                    .count.right
+                      = "(#{opinion.opposite})"
               .when_speaking.right
                 = opinion.created_at
       = form_for [@theme, @new_opinion] do |f|
@@ -51,6 +65,7 @@
           = f.text_field :text, class: 'columns'
           = f.hidden_field :side, value: '0'
         = f.submit "投稿する", class: 'button toukou'
+
     .right.comments
       .left.comments_side
         %span.secondary
@@ -63,8 +78,18 @@
               .speaker
                 = User.find(opinion.user_id).name
                 さん
-              %p
-                = opinion.text
+              .text
+                %p
+                  = opinion.text
+              .assessment
+                .ldc-ul_cont.agree.left
+                  .fa.fa-thumbs-up
+                    .count.right
+                      = "(#{opinion.agree})"
+                .ldc-ul_cont.opposite.left
+                  .fa.fa-thumbs-down
+                    .count.right
+                      = "(#{opinion.opposite})"
               .when_speaking.right
                 = opinion.created_at
       = form_for [@theme, @new_opinion] do |f|
@@ -72,8 +97,10 @@
           = f.text_field :text, class: 'columns'
           = f.hidden_field :side, value: '1'
         = f.submit "投稿する", class: 'button toukou'
+
   .advertising
     %img.img_ad{:alt => "", :border => "0", :src => "https://tpc.googlesyndication.com/simgad/14352081502697085382", :width => "728"}/
+
   .recruiting_opinions
     ご意見募集中のお題
   .content_box.clearfix
@@ -101,6 +128,7 @@
               .blue_bar{:style => "width: #{234/2}px;"}
                 %i.count
                   = theme[:blue]
+
 .bottom-content.clearfix
   .bottom-content_title
     お題を投稿する
@@ -117,6 +145,7 @@
     = f.submit "投稿する", class: 'button toukou'
   .attention
     投稿できるお題は各50文字以内です。
+
 .footer.clearfix
   .footer_columns
     %a{:href => "http://localhost:3000"}
