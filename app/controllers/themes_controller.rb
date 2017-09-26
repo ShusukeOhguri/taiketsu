@@ -1,7 +1,11 @@
 class ThemesController < ApplicationController
+
   before_action :new_theme, only: [:index, :show]
 
   def index
+    @sort_popularity_themes = "ASC"
+    @paginate_popularity_themes = 12
+    @popularity_themes = Kaminari.paginate_array(choise_theme(@sort_popularity_themes)).page(params[:page]).per(@paginate_popularity_themes)
   end
 
   def create
@@ -16,33 +20,35 @@ class ThemesController < ApplicationController
   def show
     @theme = Theme.find(params[:id])
     @opinions = @theme.opinions
-    @user_id = current_user.id
     @new_opinion = Opinion.new
   end
 
   private
     def create_params
-      params.require(:theme).permit(:red, :blue).merge(user_id: @user_id)
+      params.require(:theme).permit(:red, :blue).merge(user_id: current_user.id)
     end
 
     def new_theme
+      @sort_recruiting_opinions_themes = "DESC"
+      @paginate_recruiting_opinions_themes = 6
+      @recruiting_opinions_themes = choise_theme(@sort_recruiting_opinions_themes).take(@paginate_recruiting_opinions_themes)
       @new_theme = Theme.new
-      @popularity_themes = choise_theme(0, 12)
-      @recruiting_opinions_themes = choise_theme(1, 6)
     end
 
-    def choise_theme(sort, cnt_lmt)
+    def choise_theme(sort)
       choise_themes = []
       Theme.ids.each do |theme|
         choise_themes << {id:theme, opinion:Theme.find(theme).opinions.count}
       end
-
-      if sort == 0
-        sorted_themes = choise_themes.sort{|a, b| b[:opinion] <=> a[:opinion]}.take(cnt_lmt)
-      elsif sort == 1
-        sorted_themes = choise_themes.sort{|a, b| a[:opinion] <=> b[:opinion]}.take(cnt_lmt)
+      if sort == "ASC"
+        sorted_themes = choise_themes.sort{|a, b| b[:opinion] <=> a[:opinion]}
+      elsif sort == "DESC"
+        sorted_themes = choise_themes.sort{|a, b| a[:opinion] <=> b[:opinion]}
       end
+        count_color(sorted_themes)
+    end
 
+    def count_color(sorted_themes)
       chosen_themes = []
       sorted_themes.each do |theme|
         cnt_red = 0

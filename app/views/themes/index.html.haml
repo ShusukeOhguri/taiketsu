@@ -36,7 +36,7 @@
               .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
                 %i.count
                   = theme[:red]
-              .blue_bar{:style => "width: #{234 * theme[:blue]/theme[:opinion]}px;"}
+              .blue_bar{:style => "width: #{234 - 234 * theme[:red]/theme[:opinion]}px;"}
                 %i.count
                   = theme[:blue]
             -else
@@ -50,19 +50,8 @@
   .advertising
     %img.img_ad{:alt => "", :border => "0", :src => "https://tpc.googlesyndication.com/simgad/14352081502697085382", :width => "728"}/
   .pagination-centered
-    .pagination.clearfix
-      %li
-        %span 1
-      %li
-        %a 2
-      %li
-        %a 3
-      %li
-        %a ...
-      %li
-        %a 13
-      %li
-        %a >>
+    = paginate(@popularity_themes, window:2, outer_window:1)
+
 
   .recruiting_opinions
     ご意見募集中のお題
@@ -81,7 +70,7 @@
               .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
                 %i.count
                   = theme[:red]
-              .blue_bar{:style => "width: #{234 * theme[:blue]/theme[:opinion]}px;"}
+              .blue_bar{:style => "width: #{234 - 234 * theme[:red]/theme[:opinion]}px;"}
                 %i.count
                   = theme[:blue]
             -else

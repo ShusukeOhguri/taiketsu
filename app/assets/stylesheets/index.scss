@@ -122,13 +122,11 @@ html body {
           background-color: $red_side_color;
           float:left;
           height: 16px;
-          border-radius: 16px 0 0 16px;
         }
         .blue_bar{
           background-color: $blue_side_color;
           float:right;
           height: 16px;
-          border-radius: 0 16px 16px 0;
         }
         .count{
           color: $main_white;
@@ -146,29 +144,21 @@ html body {
   }
 
   .pagination-centered{
-    height: 27px;
     margin-bottom: 17px;
-
     .pagination{
-      width: 230px;
+      height: 27px;
+      max-width: 500px;
+      text-align: center;
       margin: 0 auto;
-
       li{
         float: left;
-        list-style: none;
-        font-size: 17px;
         margin-left: 8.750px;
-
-        span{
-          height: auto;
-          width: auto;
-        }
-
-        a{
-          height: 11px;
-          width: 28px;
-          padding: 8.750px;
-        }
+        font-size: 20px;
+      }
+      a{
+        height: 11px;
+        width: 28px;
+        padding: 8.750px;
       }
     }
   }
