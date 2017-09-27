@@ -118,7 +118,7 @@
               .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
                 %i.count
                   = theme[:red]
-              .blue_bar{:style => "width: #{234 * theme[:blue]/theme[:opinion]}px;"}
+              .blue_bar{:style => "width: #{234 - 234 * theme[:red]/theme[:opinion]}px;"}
                 %i.count
                   = theme[:blue]
             -else
