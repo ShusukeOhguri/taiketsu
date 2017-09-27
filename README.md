@@ -7,23 +7,23 @@
 |mail   |string |null: false, unique: true              |
 |pass   |string |null: false                            |
 ### Association
-・has_many :opinions
 ・has_many :themes
+・has_many :opinions
+・has_many :assessments
 
-## opinion table
+## opinions table
 |Column   |Type     |Option                           |
 |:--------|--------:|:-------------------------------:|
 |text     |text     |null: false,                     |
 |side     |integer  |null: false, 0 = red, 1 = blue   |
-|agree    |integer  |                                 |
-|opposite |integer  |                                 |
 |user_id  |integer  |null: false, foreign_key: true   |
 |theme_id |integer  |null: false, foreign_key: true   |
 ### Association
 ・belongs_to :theme
 ・belongs_to :user
+・has_many :assessments
 
-## theme table
+## themes table
 |Column   |Type     |Option                         |
 |:--------|--------:|:-----------------------------:|
 |user_id  |integer  |null: false, foreign_key: true |
@@ -32,3 +32,13 @@
 ### Association
 ・has_many :opinions
 ・belongs_to :user
+
+## assessments table
+|user_id       |integer  |null: false, foreign_key: true|
+|opinion_id    |integer  |null: false, foreign_key: true|
+|agree          |integer  |                              |
+|opposite       |integer  |                              |
+### Association
+・belongs_to :user
+・belongs_to :opinion
+
