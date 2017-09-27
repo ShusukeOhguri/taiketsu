@@ -14,7 +14,7 @@
 |Column   |Type     |Option                           |
 |:--------|--------:|:-------------------------------:|
 |text     |text     |null: false,                     |
-|wing     |integer  |null: false, 0 = left, 1 = right |
+|side     |integer  |null: false, 0 = red, 1 = blue   |
 |agree    |integer  |                                 |
 |opposite |integer  |                                 |
 |user_id  |integer  |null: false, foreign_key: true   |
@@ -27,8 +27,8 @@
 |Column   |Type     |Option                         |
 |:--------|--------:|:-----------------------------:|
 |user_id  |integer  |null: false, foreign_key: true |
-|left     |string   |null: false                    |
-|right    |string   |null: false                    |
+|red      |string   |null: false                    |
+|blue     |string   |null: false                    |
 ### Association
 ・has_many :opinions
 ・belongs_to :user

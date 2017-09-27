@@ -1,0 +1,50 @@
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.panel{
+  padding: 12.25px;
+  background-color: $main_white;
+  box-sizing: border-box;
+  box-shadow: 0 3px 5px #cccccc;
+}
+
+.vs{
+  height: 35px;
+  width: 35px;
+  margin: 10px auto;
+  border-radius: 35px;
+  background-color: $main_background_color;
+  font-size: 15px;
+  color: $main_white;
+  line-height: 35px;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+i{
+  color: black;
+  text-decoration: none;
+  font-style: normal;
+}
+
+.toukou{
+  margin: 30px auto 0 auto;
+  line-height: 40px;
+  height: 35.88px;
+  color: $main_white;
+  text-decoration: none;
+}

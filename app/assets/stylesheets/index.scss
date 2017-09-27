@@ -11,7 +11,7 @@ html body {
 
 .button{
   height: 40px;
-  max-width: 200px;
+  width: 200px;
   margin: 0 auto;
   border-width: 0px;
   border-style: solid;
@@ -28,13 +28,19 @@ html body {
 
 .top-content{
   background: $main_background_color;
-  height: 530px;
   background-size: cover;
-  color: $main_white;
-  padding: 20px 0;
   text-align: center;
+  color: $main_white;
+}
 
+.index{
+  &_top{
+    padding: 20px 0;
+    height: 530px;
+  }
+  
   &_logo{
+    color: $main_white;
     margin: 80px;
     font-style: normal;
     font-size: 57px;
@@ -49,46 +55,48 @@ html body {
       margin-bottom: 17.5px;
     }
   }
+}
 
-  .sign_out{
-    margin: 0 auto 17.5px;
-    text-decoration: none;
-  }
+.sign_out{
+  margin: 0 auto 17.5px;
+  text-decoration: none;
+}
 
-  .icon_box{
-    max-width: 420px;
+.icon_box{
+  max-width: 420px;
+  margin: 0 auto;
+  .icon{
     margin: 0 auto;
-    .icon{
+    padding: 0 8.750px;
+    float: left;
+    width: 29.1%;
+    .fa{
+      height: 58px;
+      width: 58px;
       margin: 0 auto;
-      padding: 0 8.750px;
-      float: left;
-      width: 29.1%;
-      .fa{
-        height: 58px;
-        width: 58px;
-        margin: 0 auto;
-        line-height: 58px;
-        border-radius: 100%;
-        border: 1px solid $main_white;
-        color: $main_white;
-        font-size: 25px;
-        text-decoration: none;
-      }
-
-      .fa-hatena{
-        font-weight: 900;
-        font-size: 23px;
-      }
+      line-height: 58px;
+      border-radius: 100%;
+      border: 1px solid $main_white;
+      color: $main_white;
+      font-size: 25px;
+      text-decoration: none;
+    }
+    .fa-hatena{
+      font-weight: 900;
+      font-size: 23px;
     }
   }
 }
 
 .main-content{
   padding: 20px 0;
-  height: 1559.8px;
+
   background-color: $main-contents_color;
   color: black;
   font-size: 22px;
+  .theme_show{
+    max-height: 1559.8px;
+  }
 
   .popularity_theme{
     margin: 2.8px auto 21px;
@@ -98,55 +106,31 @@ html body {
     margin: 0 auto 10px;
     min-width: 640px;
     max-width: 840px;
-    .content{
+    a.content{
       float: left;
-      padding: 0 8.75px;
-      width: 33.33333%;
-      max-width: 260px;
-      height: 195px;
-      .panel{
-        padding: 12.25px;
-        margin-bottom: 17.5px;
-        width: 260px;
-        background-color: $main_white;
-        box-sizing: border-box;
-        box-shadow: 0 3px 5px #cccccc;
-        .vs{
-          height: 35px;
-          width: 35px;
-          margin: 10px auto;
-          border-radius: 35px;
-          background-color: $main_background_color;
-          font-size: 15px;
-          color: $main_white;
-          line-height: 35px;
-        }
-        .bar{
+      margin: 0 8.75px 17.5px 8.75px;
+      .theme{
+        width: 235.5px;
+      }
+      .bar{
+        height: 16px;
+        margin: 20px 0 0;
+        border-radius: 16px;
+        width: 234px;
+        line-height: 10px;
+        .red_bar{
+          background-color: $red_side_color;
+          float:left;
           height: 16px;
-          margin: 20px 0 0;
-          border-radius: 16px;
-          width: 235px;
-          line-height: 10px;
-          .red_side{
-            background-color: $red_side_color;
-            width: $red_side;
-            float:left;
-            height: 16px;
-            border-radius: 16px 0 0 16px;
-
-          }
-          .blue_side{
-            background-color: $blue_side_color;
-            width: $blue_side;
-            float:right;
-            height: 16px;
-            border-radius: 0 16px 16px 0;
-          }
-          .count{
-
-            color: $main_white;
-            font-size: 10px;
-          }
+        }
+        .blue_bar{
+          background-color: $blue_side_color;
+          float:right;
+          height: 16px;
+        }
+        .count{
+          color: $main_white;
+          font-size: 10px;
         }
       }
     }
@@ -160,29 +144,21 @@ html body {
   }
 
   .pagination-centered{
-    height: 27px;
     margin-bottom: 17px;
-
     .pagination{
-      width: 230px;
+      height: 27px;
+      max-width: 500px;
+      text-align: center;
       margin: 0 auto;
-
       li{
         float: left;
-        list-style: none;
-        font-size: 17px;
         margin-left: 8.750px;
-
-        span{
-          height: auto;
-          width: auto;
-        }
-
-        a{
-          height: 11px;
-          width: 28px;
-          padding: 8.750px;
-        }
+        font-size: 20px;
+      }
+      a{
+        height: 11px;
+        width: 28px;
+        padding: 8.750px;
       }
     }
   }
@@ -217,29 +193,22 @@ html body {
     margin: auto;
     max-width: 700px;
     line-height: 2.3125rem;
+    margin-bottom: 30px;
 
     .columns{
       height: 2.3125rem;
       width: 300px;
+      margin: 0 auto;
       border: solid 1px;
-
-      &--left{
-        float: left;
-      }
-
-      &--right{
-        float: right;
-      }
+      border-color: $main_white;
+      font-size: 25px;
+      color: $main_white;
+      background-color: $main_background_color;
     }
 
     .vs{
       margin: 0 auto;
     }
-  }
-
-  .toukou{
-    margin: 30px auto 0 auto;
-    line-height: 40px;
   }
 
   .attention{
@@ -252,7 +221,6 @@ html body {
   min-height: 43px;
   padding-top: 10px;
   background: #222222;
-  color: #999999;
   padding: 15px 69.5px 0;
 
   &_columns{
@@ -267,11 +235,6 @@ html body {
     font-size: 0.875rem;
     padding: 2.625px 14px;
     margin-bottom: 17.500px;
+    color: #999999;
   }
 }
-
-.clearfix:after {
-  content: "";
-  clear: both;
-  display: block;
-  }
