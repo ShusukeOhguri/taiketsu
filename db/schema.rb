@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905092453) do
+ActiveRecord::Schema.define(version: 20170927162928) do
 
-  create_table "Themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "assessments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",    null: false
-    t.string   "red",        null: false
-    t.string   "blue",       null: false
+    t.integer  "opinion_id", null: false
+    t.integer  "agree"
+    t.integer  "opposite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,11 +25,17 @@ ActiveRecord::Schema.define(version: 20170905092453) do
     t.integer  "user_id",                  null: false
     t.integer  "theme_id",                 null: false
     t.integer  "side",                     null: false
-    t.integer  "agree"
-    t.integer  "opposite"
     t.text     "text",       limit: 65535, null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",    null: false
+    t.string   "red",        null: false
+    t.string   "blue",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
