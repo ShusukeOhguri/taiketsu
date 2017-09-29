@@ -40,7 +40,7 @@
           = @theme.red
         からのご意見
       - if @opinions.present?
-        - @opinions.each do |opinion|
+        - @opinions.zip(@assessments).each do |opinion, assessment|
           - if opinion.side == 0
             .comment_block.clearfix
               .speaker
@@ -53,11 +53,17 @@
                 .ldc-ul_cont.agree.left
                   .fa.fa-thumbs-up
                     .count.right
-                      = "(#{opinion.agree})"
+                      - if assessment.present?
+                        = "(#{assessment[:agree]})"
+                      - else
+                        = 0
                 .ldc-ul_cont.opposite.left
                   .fa.fa-thumbs-down
                     .count.right
-                      = "(#{opinion.opposite})"
+                      - if assessment.present?
+                        = "(#{assessment[:opposite]})"
+                      - else
+                        = 0
               .when_speaking.right
                 = opinion.created_at
       = form_for [@theme, @new_opinion] do |f|
@@ -72,7 +78,7 @@
           = @theme.blue
         からのご意見
       - if @opinions.present?
-        - @opinions.each do |opinion|
+        - @opinions.zip(@assessments).each do |opinion, assessment|
           - if opinion.side == 1
             .comment_block.clearfix
               .speaker
@@ -85,11 +91,17 @@
                 .ldc-ul_cont.agree.left
                   .fa.fa-thumbs-up
                     .count.right
-                      = "(#{opinion.agree})"
+                      - if assessment.present?
+                        = "(#{assessment[:agree]})"
+                      - else
+                        = 0
                 .ldc-ul_cont.opposite.left
                   .fa.fa-thumbs-down
                     .count.right
-                      = "(#{opinion.opposite})"
+                      - if assessment.present?
+                        = "(#{assessment[:opposite]})"
+                      - else
+                        = 0
               .when_speaking.right
                 = opinion.created_at
       = form_for [@theme, @new_opinion] do |f|
