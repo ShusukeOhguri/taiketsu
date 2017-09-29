@@ -53,7 +53,6 @@
                 .left
                   = form_for [@theme, opinion, @vote_assessment] do |f|
                     = f.hidden_field :like, value: '1'
-                    = f.hidden_field :opinion_id, value: '#{opinion}'
                     .count.right
                       - if assessment.present?
                         = f.button "(#{assessment[:agree]})", class: 'ldc-ul_cont fa fa-thumbs-up'
@@ -64,7 +63,7 @@
                     = f.hidden_field :like, value: '0'
                     .count.right
                       - if assessment.present?
-                        = f.button "(#{assessment[:agree]})", class: 'ldc-ul_cont fa fa-thumbs-down'
+                        = f.button "(#{assessment[:opposite]})", class: 'ldc-ul_cont fa fa-thumbs-down'
                       - else
                         = f.button "0", class: 'fa fa-thumbs-down'
               .when_speaking.right
@@ -104,7 +103,7 @@
                     = f.hidden_field :like, value: '0'
                     .count.right
                       - if assessment.present?
-                        = f.button "(#{assessment[:agree]})", class: 'ldc-ul_cont fa fa-thumbs-down'
+                        = f.button "(#{assessment[:opposite]})", class: 'ldc-ul_cont fa fa-thumbs-down'
                       - else
                         = f.button "0", class: 'fa fa-thumbs-down'
               .when_speaking.right
