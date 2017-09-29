@@ -10,15 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927162928) do
+ActiveRecord::Schema.define(version: 20170929094049) do
 
   create_table "assessments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",    null: false
     t.integer  "opinion_id", null: false
-    t.integer  "agree"
-    t.integer  "opposite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "like"
   end
 
   create_table "opinions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

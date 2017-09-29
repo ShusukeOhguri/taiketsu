@@ -31,14 +31,16 @@
 |blue     |string   |null: false                    |
 ### Association
 ・has_many :opinions
+・has_many :assessments
 ・belongs_to :user
 
 ## assessments table
-|user_id       |integer  |null: false, foreign_key: true|
-|opinion_id    |integer  |null: false, foreign_key: true|
+|user_id        |integer  |null: false, foreign_key: true|
+|opinion_id     |integer  |null: false, foreign_key: true|
 |agree          |integer  |                              |
 |opposite       |integer  |                              |
 ### Association
 ・belongs_to :user
 ・belongs_to :opinion
+・belongs_to :theme
 
