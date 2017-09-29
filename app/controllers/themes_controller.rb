@@ -22,6 +22,7 @@ class ThemesController < ApplicationController
     @opinions = @theme.opinions
     @new_opinion = Opinion.new
     @assessments = check_assessment(@opinions)
+    @vote_assessment = Assessment.new
   end
 
   private
