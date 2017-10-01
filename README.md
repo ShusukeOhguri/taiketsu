@@ -37,8 +37,7 @@
 ## assessments table
 |user_id        |integer  |null: false, foreign_key: true|
 |opinion_id     |integer  |null: false, foreign_key: true|
-|agree          |integer  |                              |
-|opposite       |integer  |                              |
+|like           |integer  |1 = agree, 0 = opposite       |
 ### Association
 ・belongs_to :user
 ・belongs_to :opinion
