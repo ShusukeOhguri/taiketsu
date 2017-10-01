@@ -21,6 +21,8 @@ class ThemesController < ApplicationController
     @theme = Theme.find(params[:id])
     @opinions = @theme.opinions
     @new_opinion = Opinion.new
+    @assessments = check_assessment(@opinions)
+    @vote_assessment = Assessment.new
   end
 
   private
@@ -66,5 +68,24 @@ class ThemesController < ApplicationController
         chosen_themes << theme
       end
       return chosen_themes
+    end
+
+    def check_assessment(opinions)
+      opinion_assessments = []
+      opinions.each do |opinion|
+        @assessments = Opinion.find(opinion.id).assessments.ids
+        cnt_agree = 0
+        cnt_opposite = 0
+        @assessments.each do |assessment|
+          if Assessment.find(assessment).like == 1
+            cnt_agree += 1
+          else
+            cnt_opposite +=1
+          end
+        end
+        assessments = {agree:cnt_agree, opposite:cnt_opposite}
+        opinion_assessments << assessments
+      end
+      return opinion_assessments
     end
 end

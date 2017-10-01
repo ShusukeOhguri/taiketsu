@@ -10,25 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905092453) do
+ActiveRecord::Schema.define(version: 20170927161719) do
 
-  create_table "Themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "assessments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",    null: false
-    t.string   "red",        null: false
-    t.string   "blue",       null: false
+    t.integer  "opinion_id", null: false
+    t.integer  "like"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["opinion_id"], name: "index_assessments_on_opinion_id", using: :btree
+    t.index ["user_id"], name: "index_assessments_on_user_id", using: :btree
   end
 
   create_table "opinions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                  null: false
     t.integer  "theme_id",                 null: false
     t.integer  "side",                     null: false
-    t.integer  "agree"
-    t.integer  "opposite"
     t.text     "text",       limit: 65535, null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["theme_id"], name: "index_opinions_on_theme_id", using: :btree
+    t.index ["user_id"], name: "index_opinions_on_user_id", using: :btree
+  end
+
+  create_table "themes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",    null: false
+    t.string   "red",        null: false
+    t.string   "blue",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_themes_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,4 +61,9 @@ ActiveRecord::Schema.define(version: 20170905092453) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "assessments", "opinions"
+  add_foreign_key "assessments", "users"
+  add_foreign_key "opinions", "themes"
+  add_foreign_key "opinions", "users"
+  add_foreign_key "themes", "users"
 end

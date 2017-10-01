@@ -40,7 +40,7 @@
           = @theme.red
         からのご意見
       - if @opinions.present?
-        - @opinions.each do |opinion|
+        - @opinions.zip(@assessments).each do |opinion, assessment|
           - if opinion.side == 0
             .comment_block.clearfix
               .speaker
@@ -50,14 +50,22 @@
                 %p
                   = opinion.text
               .assessment
-                .ldc-ul_cont.agree.left
-                  .fa.fa-thumbs-up
+                .left
+                  = form_for [@theme, opinion, @vote_assessment] do |f|
+                    = f.hidden_field :like, value: '1'
                     .count.right
-                      = "(#{opinion.agree})"
-                .ldc-ul_cont.opposite.left
-                  .fa.fa-thumbs-down
+                      - if assessment.present?
+                        = f.button "(#{assessment[:agree]})", class: 'ldc-ul_cont fa fa-thumbs-up'
+                      - else
+                        = f.button "0", class: 'fa fa-thumbs-up'
+                .left
+                  = form_for [@theme, opinion, @vote_assessment] do |f|
+                    = f.hidden_field :like, value: '0'
                     .count.right
-                      = "(#{opinion.opposite})"
+                      - if assessment.present?
+                        = f.button "(#{assessment[:opposite]})", class: 'ldc-ul_cont fa fa-thumbs-down'
+                      - else
+                        = f.button "0", class: 'fa fa-thumbs-down'
               .when_speaking.right
                 = opinion.created_at
       = form_for [@theme, @new_opinion] do |f|
@@ -72,7 +80,7 @@
           = @theme.blue
         からのご意見
       - if @opinions.present?
-        - @opinions.each do |opinion|
+        - @opinions.zip(@assessments).each do |opinion, assessment|
           - if opinion.side == 1
             .comment_block.clearfix
               .speaker
@@ -82,14 +90,22 @@
                 %p
                   = opinion.text
               .assessment
-                .ldc-ul_cont.agree.left
-                  .fa.fa-thumbs-up
+                .left
+                  = form_for [@theme, opinion, @vote_assessment] do |f|
+                    = f.hidden_field :like, value: '1'
                     .count.right
-                      = "(#{opinion.agree})"
-                .ldc-ul_cont.opposite.left
-                  .fa.fa-thumbs-down
+                      - if assessment.present?
+                        = f.button "(#{assessment[:agree]})", class: 'ldc-ul_cont fa fa-thumbs-up'
+                      - else
+                        = f.button "0", class: 'fa fa-thumbs-up'
+                .left
+                  = form_for [@theme, opinion, @vote_assessment] do |f|
+                    = f.hidden_field :like, value: '0'
                     .count.right
-                      = "(#{opinion.opposite})"
+                      - if assessment.present?
+                        = f.button "(#{assessment[:opposite]})", class: 'ldc-ul_cont fa fa-thumbs-down'
+                      - else
+                        = f.button "0", class: 'fa fa-thumbs-down'
               .when_speaking.right
                 = opinion.created_at
       = form_for [@theme, @new_opinion] do |f|
