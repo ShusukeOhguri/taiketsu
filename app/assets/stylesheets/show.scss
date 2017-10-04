@@ -35,7 +35,7 @@
 .theme_panel{
   margin: 0 auto 17.5px;
   padding: 12.25px;
-  height: 140px;
+  min-height: 140px;
   width: 800px;
   background-color: $main_white;
   box-shadow: 0 3px 5px #cccccc;
