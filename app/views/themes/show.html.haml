@@ -1,6 +1,6 @@
 .top-content.show_top.clearfix
   .show_logo
-    %a{:href => "http://localhost:3000"}
+    = link_to root_path do
       タイケツ
   .show_columns.button
     = link_to destroy_user_session_path, method: :delete do
@@ -11,14 +11,16 @@
   .adjustlink_box.clearfix
     - if Theme.exists?(@theme.id - 1)
       .adjustlink.left
-        %a.left{:href => "http://localhost:3000/themes/#{Theme.find((@theme.id)-1).id}"}
-          %i.fa.fa-arrow-circle-left
-          = "#{Theme.find((@theme.id)-1).red} vs #{Theme.find((@theme.id)-1).blue}"
+        = link_to theme_path((@theme.id)-1) do
+          .left
+            %i.fa.fa-arrow-circle-left
+            = "#{Theme.find((@theme.id)-1).red} vs #{Theme.find((@theme.id)-1).blue}"
     - if Theme.exists?(@theme.id + 1)
       .adjustlink.right
-        %a.right{:href => "http://localhost:3000/themes/#{Theme.find((@theme.id)+1).id}"}
-          = "#{Theme.find((@theme.id)+1).red} vs #{Theme.find((@theme.id)+1).blue}"
-          %i.fa.fa-arrow-circle-right
+        = link_to theme_path((@theme.id)+1) do
+          .right
+            = "#{Theme.find((@theme.id)+1).red} vs #{Theme.find((@theme.id)+1).blue}"
+            %i.fa.fa-arrow-circle-right
 
   .theme_panel
     .theme_box
@@ -121,29 +123,30 @@
     ご意見募集中のお題
   .content_box.clearfix
     - @recruiting_opinions_themes.each do |theme|
-      %a.content{:href => "http://localhost:3000/themes/#{theme[:id]}"}
-        .panel.clearfix
-          .theme
-            = Theme.find(theme[:id]).red
-          .vs
-            vs
-          .theme
-            = Theme.find(theme[:id]).blue
-          .bar
-            -if theme[:opinion] > 0
-              .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
-                %i.count
-                  = theme[:red]
-              .blue_bar{:style => "width: #{234 - 234 * theme[:red]/theme[:opinion]}px;"}
-                %i.count
-                  = theme[:blue]
-            -else
-              .red_bar{:style => "width: #{234/2}px;"}
-                %i.count
-                  = theme[:red]
-              .blue_bar{:style => "width: #{234/2}px;"}
-                %i.count
-                  = theme[:blue]
+      = link_to theme_path(theme[:id]) do
+        .content
+          .panel.clearfix
+            .theme
+              = Theme.find(theme[:id]).red
+            .vs
+              vs
+            .theme
+              = Theme.find(theme[:id]).blue
+            .bar
+              -if theme[:opinion] > 0
+                .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
+                  %i.count
+                    = theme[:red]
+                .blue_bar{:style => "width: #{234 - 234 * theme[:red]/theme[:opinion]}px;"}
+                  %i.count
+                    = theme[:blue]
+              -else
+                .red_bar{:style => "width: #{234/2}px;"}
+                  %i.count
+                    = theme[:red]
+                .blue_bar{:style => "width: #{234/2}px;"}
+                  %i.count
+                    = theme[:blue]
 
 .bottom-content.clearfix
   .bottom-content_title
@@ -164,7 +167,7 @@
 
 .footer.clearfix
   .footer_columns
-    %a{:href => "http://localhost:3000"}
+    = link_to root_path do
       トップページ
     %a タイケツの楽しみ方
     %a 利用規約・免責事項

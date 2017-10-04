@@ -1,7 +1,8 @@
 .top-content.index_top.clearfix
   .index_logo
-    %a.index_logo{:href => "http://localhost:3000"}
-      タイケツ
+    = link_to root_path do
+      .index_logo
+        タイケツ
   .index_columns
     %p
       いつも宿敵、ライバルとして憎み合い、争い合う二人。
@@ -23,29 +24,30 @@
     人気のお題
   .content_box.clearfix
     - @popularity_themes.each do |theme|
-      %a.content{:href => "http://localhost:3000/themes/#{theme[:id]}"}
-        .panel.clearfix
-          .theme
-            = Theme.find(theme[:id]).red
-          .vs
-            vs
-          .theme
-            = Theme.find(theme[:id]).blue
-          .bar
-            -if theme[:opinion] > 0
-              .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
-                %i.count
-                  = theme[:red]
-              .blue_bar{:style => "width: #{234 - 234 * theme[:red]/theme[:opinion]}px;"}
-                %i.count
-                  = theme[:blue]
-            -else
-              .red_bar{:style => "width: #{234/2}px;"}
-                %i.count
-                  = theme[:red]
-              .blue_bar{:style => "width: #{234/2}px;"}
-                %i.count
-                  = theme[:blue]
+      = link_to theme_path(theme[:id]) do
+        .content
+          .panel.clearfix
+            .theme
+              = Theme.find(theme[:id]).red
+            .vs
+              vs
+            .theme
+              = Theme.find(theme[:id]).blue
+            .bar
+              -if theme[:opinion] > 0
+                .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
+                  %i.count
+                    = theme[:red]
+                .blue_bar{:style => "width: #{234 - 234 * theme[:red]/theme[:opinion]}px;"}
+                  %i.count
+                    = theme[:blue]
+              -else
+                .red_bar{:style => "width: #{234/2}px;"}
+                  %i.count
+                    = theme[:red]
+                .blue_bar{:style => "width: #{234/2}px;"}
+                  %i.count
+                    = theme[:blue]
 
   .advertising
     %img.img_ad{:alt => "", :border => "0", :src => "https://tpc.googlesyndication.com/simgad/14352081502697085382", :width => "728"}/
@@ -57,29 +59,30 @@
     ご意見募集中のお題
   .content_box.clearfix
     - @recruiting_opinions_themes.each do |theme|
-      %a.content{:href => "http://localhost:3000/themes/#{theme[:id]}"}
-        .panel.clearfix
-          .theme
-            = Theme.find(theme[:id]).red
-          .vs
-            vs
-          .theme
-            = Theme.find(theme[:id]).blue
-          .bar
-            -if theme[:opinion] > 0
-              .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
-                %i.count
-                  = theme[:red]
-              .blue_bar{:style => "width: #{234 - 234 * theme[:red]/theme[:opinion]}px;"}
-                %i.count
-                  = theme[:blue]
-            -else
-              .red_bar{:style => "width: #{234/2}px;"}
-                %i.count
-                  = theme[:red]
-              .blue_bar{:style => "width: #{234/2}px;"}
-                %i.count
-                  = theme[:blue]
+      = link_to theme_path(theme[:id]) do
+        .content
+          .panel.clearfix
+            .theme
+              = Theme.find(theme[:id]).red
+            .vs
+              vs
+            .theme
+              = Theme.find(theme[:id]).blue
+            .bar
+              -if theme[:opinion] > 0
+                .red_bar{:style => "width: #{234 * theme[:red]/theme[:opinion]}px;"}
+                  %i.count
+                    = theme[:red]
+                .blue_bar{:style => "width: #{234 - 234 * theme[:red]/theme[:opinion]}px;"}
+                  %i.count
+                    = theme[:blue]
+              -else
+                .red_bar{:style => "width: #{234/2}px;"}
+                  %i.count
+                    = theme[:red]
+                .blue_bar{:style => "width: #{234/2}px;"}
+                  %i.count
+                    = theme[:blue]
 
 .bottom-content.clearfix
   .bottom-content_title
@@ -99,7 +102,7 @@
     投稿できるお題は各50文字以内です。
 .footer.clearfix
   .footer_columns
-    %a{:href => "http://localhost:3000"}
+    = link_to root_path do
       トップページ
     %a タイケツの楽しみ方
     %a 利用規約・免責事項
